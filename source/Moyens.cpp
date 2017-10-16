@@ -22,3 +22,5 @@ const double getEmpreinteCarbone(void)const{
 const std::string& getNom(void)const{
 	return nom;
 }
+
+void Moyens::affiche(void)const{}

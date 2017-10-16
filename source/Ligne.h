@@ -18,8 +18,8 @@ public:
 
 };
 
-template <T>
-Ligne(
+template <class T>
+Ligne<T>(
 	const Terminal* _origin,
 	Terminal *_destination, 
 	const int _frequence = 1
@@ -28,13 +28,13 @@ Ligne(
 
 }
 
-template <T>
-void Ligne::affiche(void)const{
+template <class T>
+void Ligne<T>::affiche(void)const{
 	std::cout << "Object : Ligne\n\tType de transport :" << typeTransports.getNom() << "\n\torigin : " << "recup origin" << "\n\tdestination : " << "recup dest" << "\n\tNombre de passager/jour : " << nbPassagerJour << std::endl;
 }
 
-template<T>
-const int Ligne::getFrequence(void)const{return frequence;}
+template<class T>
+const int Ligne<T>::getFrequence(void)const{return frequence;}
 
 
 

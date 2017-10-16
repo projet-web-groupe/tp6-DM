@@ -4,9 +4,8 @@
 class Voyage {
 	Moyens origin;
 	Moyens destination;
-	std::list<Avion *> correspAvion;
-	std::list<Train *> correspTrain;
-	std::list<TrainElec *> correspTrainElec;
+	//pointeur car destruction d'un voyage != destruction 
+	std::list<Ligne *> correspondance;
 }
 
 #endif
