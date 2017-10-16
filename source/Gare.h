@@ -4,8 +4,9 @@
 
 class Gare: public Terminal
 {
-  
-}
+  protected:
+
+};
 
 
 #endif
