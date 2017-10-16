@@ -2,7 +2,11 @@
 #define VOYAGE_H
 
 class Voyage {
-	std::list
+	Moyens origin;
+	Moyens destination;
+	std::list<Avion *> correspAvion;
+	std::list<Train *> correspTrain;
+	std::list<TrainElec *> correspTrainElec;
 }
 
 #endif
