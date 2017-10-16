@@ -12,11 +12,10 @@ protected:
 		const _empreinteCarbone = 0
 		);
 public:
-	//pas d'enumeration -> simplification de la lecture du code
-	static const int train;  
-	static const int avion;  
-	static const int avionElec;
 	void affiche(void)const = 0;
+	const unsigned int getCapacite(void)const;
+	const unsigned int getVitesse(void)const;
+	const double getEmpreinteCarbone(void)const;
 }
 
 #endif
