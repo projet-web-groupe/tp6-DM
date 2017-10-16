@@ -6,6 +6,7 @@
 class AvionElec : public Moyens{
 public:
 	AvionElec();
+	void affiche(void)const;
 };
 
 #endif

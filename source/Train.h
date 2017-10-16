@@ -6,6 +6,7 @@
 class Train : public Moyens{
 public:
 	Train();
+	void affiche(void)const;
 };
 
 #endif
