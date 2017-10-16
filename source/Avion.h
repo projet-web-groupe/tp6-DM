@@ -4,6 +4,6 @@
 class Avion : public Moyens{
 public:
 	Avion();
-}
+};
 
 #endif

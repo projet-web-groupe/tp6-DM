@@ -4,6 +4,6 @@
 class Train : public Moyens{
 public:
 	Train();
-}
+};
 
 #endif
