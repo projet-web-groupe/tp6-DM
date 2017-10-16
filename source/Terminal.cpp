@@ -1,12 +1,7 @@
 #include "Terminal.h"
-
-Terminal::Terminal()
+#include "Ligne.h"
+Terminal::Terminal():latitude(0),longitude(0),liaison(std::list<Terminal*>()),tempsMoyenCorrespondance(std::list<double>()),flux(std::list<int>()),nom("en construction")
 {
-  latitude=0;
-  longitude=0;
-  liaison= std::list<Terminal*>();
-  tempsMoyenCorrespondance= std::list<double>();
-  flux= std::list<int>();
 
 }
 
@@ -25,23 +20,23 @@ Terminal:: ~Terminal()
 
 }
 
-double Terminal::getLat()
+const double Terminal::getLat() const
 {
   return latitude;
 }
-double Terminal::getLon()
+const double Terminal::getLon() const
 {
   return longitude;
 }
-std::list<double> Terminal::getTMC()
+const std::list<double> Terminal::getTMC() const
 {
   return tempsMoyenCorrespondance;
 }
-std::list<double> Terminal::getFlux()
+const std::list<int> Terminal::getFlux() const
 {
   return flux;
 }
-std::list<Terminal*> Terminal::getLiaison()
+const std::list<Terminal*> Terminal::getLiaison() const
 {
   return liaison;
 }
@@ -63,5 +58,13 @@ void Terminal::setFlux(std::list<int> f)
 }
 double Terminal::distance(double lat, double lon)
 {
-  return 60*accos(sin(latitude)*sin(lat)+cos(latitude)*cos(lat)*cos(lon-longitude));
+  return 60*acos(sin(latitude)*sin(lat)+cos(latitude)*cos(lat)*cos(lon-longitude));
+}
+const std::string getNom() const
+{
+  return nom;
+}
+void setNom(std::string n)
+{
+  nom=n;
 }
