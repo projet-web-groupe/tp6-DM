@@ -4,14 +4,14 @@
 #include <string>
 #include <list>
 #include<cmath>
-class Ligne{};
+#include "Ligne.h"
 
 class Terminal{
 
 protected:
   double latitude;
   double longitude;
-  std::list<Ligne> liaison;
+  std::list<Ligne *> liaison;
   std::list<double> tempsMoyenCorrespondance;
   std::list<int> flux;
   std:: string nom;
