@@ -1,6 +1,6 @@
 #ifndef MOYENS_H
 #define MOYENS_H
-
+#include <iostream>
 #include <string>
 
 class Moyens {

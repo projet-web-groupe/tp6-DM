@@ -2,7 +2,7 @@ CC = g++
 CCFLAGS= -Wall -pedantic -ggdb
 EXTC = cpp
 EXTH = h
-EXECUTABLE = tp4-5
+EXECUTABLE = DM
 
 SRC = $(wildcard *.$(EXTC))
 HDR = $(wildcard *.$(EXTH))
