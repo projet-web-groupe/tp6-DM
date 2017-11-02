@@ -2,6 +2,7 @@
 #define MOYENS_H
 #include <iostream>
 #include <string>
+
 class Moyens {
 protected:
 	const unsigned int capacite;
@@ -15,10 +16,10 @@ protected:
 		const std::string _nom = "none"
 		);
 public:
-	virtual void affiche(void)const = 0;
-	const unsigned int getCapacite(void)const;
-	const unsigned int getVitesse(void)const;
-	const double getEmpreinteCarbone(void)const;
+	virtual void affiche(void)const;
+	const unsigned int& getCapacite(void)const;
+	const unsigned int& getVitesse(void)const;
+	const double& getEmpreinteCarbone(void)const;
 	const std::string& getNom(void)const;
 };
 
