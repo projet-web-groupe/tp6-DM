@@ -1,6 +1,5 @@
 #include "Terminal.h"
-#include "Ligne.h"
-Terminal::Terminal():latitude(0),longitude(0),liaison(std::list<Terminal*>()),tempsMoyenCorrespondance(std::list<double>()),flux(std::list<int>()),nom("en construction")
+Terminal::Terminal():latitude(0),longitude(0),liaison(std::list<Ligne<Terminal>*>()),tempsMoyenCorrespondance(std::list<double>()),flux(std::list<int>()),nom("en construction")
 {
 
 }
@@ -9,7 +8,7 @@ Terminal::Terminal(double lat, double lon)
 {
   latitude=lat;
   longitude= lon;
-  liaison= std::list<Terminal*>();
+  liaison= std::list<Ligne<Terminal>*>();
   tempsMoyenCorrespondance= std::list<double>();
   flux= std::list<int>();
 
@@ -36,7 +35,7 @@ const std::list<int> Terminal::getFlux() const
 {
   return flux;
 }
-const std::list<Terminal*> Terminal::getLiaison() const
+const std::list<Ligne<Terminal>*> Terminal::getLiaison() const
 {
   return liaison;
 }
@@ -60,11 +59,15 @@ double Terminal::distance(double lat, double lon)
 {
   return 60*acos(sin(latitude)*sin(lat)+cos(latitude)*cos(lat)*cos(lon-longitude));
 }
-const std::string getNom() const
+const std::string Terminal::getNom()
 {
   return nom;
 }
-void setNom(std::string n)
+void Terminal::setNom(std::string n)
 {
   nom=n;
+}
+void ajouterLiaison(Terminal t)
+{
+  liaison.push_back(t);
 }
