@@ -8,7 +8,7 @@ class Terminal;
 template <class T>
 class Ligne
 {
-	//const T typeTransports;
+	const T& typeTransports;
 	//Pointeur car relation d'aggregation (destruction d'une ligne != destruction terminal)
 	T *origin;
 	T *destination;
@@ -17,8 +17,7 @@ class Ligne
 public:
 	void affiche(void)const;
 	const int getFrequence(void)const;
-	Ligne(/*const T& _typeTransports,*/const T* _origin,T *_destination, const int _frequence = 1);
-
+	Ligne(const T& _typeTransports,const T* _origin,T *_destination, const int _frequence = 1);
 
 };
 

@@ -5,6 +5,7 @@
 #include <list>
 #include<cmath>
 #include "Ligne.h"
+#include "Moyens.h"
 
 class Terminal{
 
@@ -25,7 +26,7 @@ class Terminal{
     const std::list<double> getTMC() const;
     const std::list<int> getFlux() const;
     const std::list<Ligne<Terminal>*> getLiaison() const;
-    void ajouterLiaison(Terminal t);
+    
     void setLat(double lat);
     void setLon(double lon);
     void setTMC(std::list<double> l);

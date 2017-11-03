@@ -13,6 +13,8 @@ class Gare: public Terminal
   	Gare();
   	Gare(double lat, double lon);
   	const std::list<Ligne<Train>*> getLiaison() const;
+  	void ajoutLigne(Ligne<Train>* l);
+  	void suppLigne(Ligne<Train>* l);
 };
 
 

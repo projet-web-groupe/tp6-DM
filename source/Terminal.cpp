@@ -67,7 +67,4 @@ void Terminal::setNom(std::string n)
 {
   nom=n;
 }
-void ajouterLiaison(Terminal t)
-{
-  liaison.push_back(t);
-}
+

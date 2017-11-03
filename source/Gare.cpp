@@ -12,3 +12,12 @@
   	{
   		return liaison;
   	}
+    void Gare::ajoutLigne(Ligne<Train>* l)
+    {
+      liaison.push_back(l);
+    }
+
+    void Gare::suppLigne(Ligne<Train>* l)
+    {
+      liaison.remove(l);
+    }
