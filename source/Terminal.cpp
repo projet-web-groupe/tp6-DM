@@ -8,7 +8,7 @@ Terminal::Terminal(double lat, double lon)
 {
   latitude=lat;
   longitude= lon;
-  liaison= std::list<Ligne<Terminal>*>();
+  liaison= std::list<Ligne<Moyens>*>();
   tempsMoyenCorrespondance= std::list<double>();
   flux= std::list<int>();
 
