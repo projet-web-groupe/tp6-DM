@@ -1,20 +1,22 @@
 #ifndef VOYAGE_H
 #define VOYAGE_H
+
 #include "Ligne.h"
 class Moyens;
+class Terminal;
 
 class Voyage {
 	
 	const Terminal& origin;
 	const Terminal& destination;
 	//pointeur car destruction d'un voyage != destruction 
-	std::list<const Ligne<Moyens>&> correspondance;
+	std::list<const Ligne<Moyens> *> correspondance;
 public:
-	Voyage();
+	Voyage(const Terminal& _origin, const Terminal& _destination);
 	~Voyage();
-	void addCorrespondance(const Ligne<Moyens>& correspondance);
-	unsigned double getTime(unsigned long int flux) const;
-	unsigned double getEmpreinteCarbone(unsigned long int flux) const;
-}
+	void addCorrespondance(const Ligne<Moyens>* correspondance);
+	double getTime(unsigned long int flux) const;
+	double getEmpreinteCarbone(unsigned long int flux)const;
+};
 
 #endif
