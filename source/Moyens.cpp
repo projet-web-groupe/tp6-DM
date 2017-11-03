@@ -2,12 +2,14 @@
 #include <iostream>
 
 Moyens::Moyens(
+
 	const unsigned int _capacite,
 	const unsigned int _vitesse,
 	const double _empreinteCarbone,
 	const std::string _nom
 	)
 : capacite(_capacite), vitesse(_vitesse), empreinteCarbone(_empreinteCarbone), nom(_nom){}
+
 
 const unsigned int& Moyens::getCapacite(void)const{
 	return capacite;
