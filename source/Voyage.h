@@ -4,10 +4,13 @@
 class Moyens;
 
 class Voyage {
-	Moyens origin;
-	Moyens destination;
+	
+	const Moyens& origin;
+	const Moyens& destination;
 	//pointeur car destruction d'un voyage != destruction 
-	std::list<Ligne<Moyens>> correspondance;
+	std::list<Ligne<Avion *>> lAvion;
+	std::list<Ligne<AvionElec *>> lAvionElectrique;
+	std::list<Ligne<Train *>> lTrain;
 public:
 	Voyage();
 	~Voyage();

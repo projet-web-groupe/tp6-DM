@@ -17,7 +17,7 @@ class Ligne
 public:
 	void affiche(void)const;
 	const int getFrequence(void)const;
-	Ligne(/*const T& _typeTransports,*/const T* _origin,T *_destination, const int _frequence = 1);
+	Ligne(const T* _origin,T *_destination, const int _frequence = 1);
 
 
 
