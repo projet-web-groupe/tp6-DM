@@ -5,15 +5,16 @@ class Moyens;
 
 class Voyage {
 	
-	const Moyens& origin;
-	const Moyens& destination;
+	const Terminal& origin;
+	const Terminal& destination;
 	//pointeur car destruction d'un voyage != destruction 
-	std::list<Ligne<Avion *>> lAvion;
-	std::list<Ligne<AvionElec *>> lAvionElectrique;
-	std::list<Ligne<Train *>> lTrain;
+	std::list<const Ligne<Moyens>&> correspondance;
 public:
 	Voyage();
 	~Voyage();
+	void addCorrespondance(const Ligne<Moyens>& correspondance);
+	unsigned double getTime(unsigned long int flux) const;
+	unsigned double getEmpreinteCarbone(unsigned long int flux) const;
 }
 
 #endif
