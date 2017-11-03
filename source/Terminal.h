@@ -12,11 +12,10 @@ class Terminal{
   protected:
     double latitude;
     double longitude;
-    std::list<Ligne<Terminal>*> liaison;
+    std::list<Ligne<Moyens>*> liaison;
     std::list<double> tempsMoyenCorrespondance;
     std::list<int> flux;
     std:: string nom;
-
 
   public:
     Terminal();
