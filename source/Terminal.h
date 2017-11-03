@@ -25,7 +25,7 @@ class Terminal{
     const double getLon() const;
     const std::list<double> getTMC() const;
     const std::list<int> getFlux() const;
-    const std::list<Ligne<Terminal>*> getLiaison() const;
+    const std::list<Ligne<Moyens>*> getLiaison() const;
     
     void setLat(double lat);
     void setLon(double lon);
