@@ -2,8 +2,9 @@
 #define LIGNE_H
 
 #include "Terminal.h"
+class Terminal;
+class Moyens;
 
-<<<<<<< HEAD
 template <class T>
 class Ligne
 {
@@ -24,6 +25,7 @@ public:
 	Terminal * getDestination()const;
 
 };
+
 
 template <class T>
 Ligne<T>::Ligne(
