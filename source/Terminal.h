@@ -17,6 +17,7 @@ class Terminal{
     std::list<int> flux;
     std:: string nom;
 
+
   public:
     Terminal();
     Terminal(double lat, double lon);

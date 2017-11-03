@@ -4,6 +4,7 @@
 class Avion : public Moyens{
 public:
 	Avion();
+	void affiche(void)const;
 };
 
 #endif

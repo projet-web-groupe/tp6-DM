@@ -19,6 +19,7 @@ public:
 	const int getFrequence(void)const;
 	Ligne(const T& _typeTransports,const T* _origin,T *_destination, const int _frequence = 1);
 
+
 };
 
 #endif
