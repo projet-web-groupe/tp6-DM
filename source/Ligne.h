@@ -1,6 +1,5 @@
 #ifndef LIGNE_H
 #define LIGNE_H
-
 #include "Terminal.h"
 class Terminal;
 class Moyens;

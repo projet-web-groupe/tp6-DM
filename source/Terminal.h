@@ -4,7 +4,9 @@
 #include <string>
 #include <list>
 #include<cmath>
-#include "Ligne.h"
+#include "Moyens.h"
+template <class T>
+class Ligne;
 
 class Terminal{
 

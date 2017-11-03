@@ -35,7 +35,7 @@ const std::list<int> Terminal::getFlux() const
 {
   return flux;
 }
-const std::list<Ligne<Terminal>*> Terminal::getLiaison() const
+const std::list<Ligne<Moyens>*> Terminal::getLiaison() const
 {
   return liaison;
 }
