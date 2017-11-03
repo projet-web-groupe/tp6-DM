@@ -5,17 +5,17 @@
 #include <list>
 #include<cmath>
 #include "Ligne.h"
-#include "Moyens.h"
 
 class Terminal{
 
   protected:
     double latitude;
     double longitude;
-    std::list<Ligne<Moyens>*> liaison;
+    std::list<Ligne<Terminal>*> liaison;
     std::list<double> tempsMoyenCorrespondance;
     std::list<int> flux;
     std:: string nom;
+
 
   public:
     Terminal();
@@ -25,8 +25,8 @@ class Terminal{
     const double getLon() const;
     const std::list<double> getTMC() const;
     const std::list<int> getFlux() const;
-    const std::list<Ligne<Moyens>*> getLiaison() const;
-    
+    const std::list<Ligne<Terminal>*> getLiaison() const;
+    void ajouterLiaison(Terminal t);
     void setLat(double lat);
     void setLon(double lon);
     void setTMC(std::list<double> l);
@@ -35,7 +35,7 @@ class Terminal{
     const std::string getNom();
     void setNom(std::string n);
 };
-
+//
 
 
 #endif
