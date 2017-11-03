@@ -35,7 +35,7 @@ class Terminal{
     const std::string getNom();
     void setNom(std::string n);
 };
-
+//
 
 
 #endif
