@@ -11,7 +11,7 @@ class Terminal{
   protected:
     double latitude;
     double longitude;
-    std::list<Ligne<Terminal>*> liaison;
+    std::list<Ligne<Moyens>*> liaison;
     std::list<double> tempsMoyenCorrespondance;
     std::list<int> flux;
     std:: string nom;
@@ -25,7 +25,7 @@ class Terminal{
     const double getLon() const;
     const std::list<double> getTMC() const;
     const std::list<int> getFlux() const;
-    const std::list<Ligne<Terminal>*> getLiaison() const;
+    const std::list<Ligne<Moyens>*> getLiaison() const;
     void ajouterLiaison(Terminal t);
     void setLat(double lat);
     void setLon(double lon);
