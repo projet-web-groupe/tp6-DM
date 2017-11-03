@@ -1,9 +1,7 @@
 #ifndef LIGNE_H
 #define LIGNE_H
-
 #include "Terminal.h"
 
-<<<<<<< HEAD
 template <class T>
 class Ligne
 {
