@@ -3,9 +3,12 @@
 
 #include "Terminal.h"
 
-template<class T>
-class Ligne {
-	T typeTransports;
+<<<<<<< HEAD
+template <class T>
+class Ligne
+{
+	const T& typeTransports;
+
 	//Pointeur car relation d'aggregation (destruction d'une ligne != destruction terminal)
 	Terminal *origin;
 	Terminal *destination;
@@ -14,6 +17,7 @@ class Ligne {
 public:
 	void affiche(void)const;
 	const int getFrequence(void)const;
+
 	Ligne(const Terminal* origin,Terminal *destination, const int frequence = 1/(24*3600));
 	const T& getMoyen()const;
 	Terminal * getOrigin()const;

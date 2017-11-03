@@ -1,5 +1,5 @@
 #include "Terminal.h"
-Terminal::Terminal():latitude(0),longitude(0),liaison(std::list<Ligne<Terminal>*>()),tempsMoyenCorrespondance(std::list<double>()),flux(std::list<int>()),nom("en construction")
+Terminal::Terminal():latitude(0),longitude(0),liaison(std::list<Ligne<Moyens>*>()),tempsMoyenCorrespondance(std::list<double>()),flux(std::list<int>()),nom("en construction")
 {
 
 }
@@ -67,7 +67,4 @@ void Terminal::setNom(std::string n)
 {
   nom=n;
 }
-void ajouterLiaison(Terminal t)
-{
-  liaison.push_back(t);
-}
+
