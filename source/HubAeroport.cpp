@@ -5,6 +5,7 @@ HubAeroport::HubAeroport():Terminal(){}
 HubAeroport::HubAeroport(double lat, double lon, double t, std::string n):Terminal(lat,lon,t,n)
 {}
 
+HubAeroport::~HubAeroport(){}
 
 void HubAeroport::ajoutLigne(Ligne<Moyens>* l, int f)
 {

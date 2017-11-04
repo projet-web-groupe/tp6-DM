@@ -5,6 +5,7 @@ AeroportRegional::AeroportRegional():Terminal(){}
 AeroportRegional::AeroportRegional(double lat, double lon, double t, std::string n):Terminal(lat,lon,t,n)
 {}
 
+AeroportRegional::~AeroportRegional(){}
 
 void AeroportRegional::ajoutLigne(Ligne<Moyens>* l, int f)
 {

@@ -12,6 +12,7 @@ class AeroportRegional: public Terminal{
 	public:
 		AeroportRegional();
 		AeroportRegional(double lat, double lon, double t, std::string n);
+		~AeroportRegional();
 		void ajoutLigne(Ligne<Moyens>* l, int f);
 };
 

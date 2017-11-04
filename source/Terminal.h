@@ -21,7 +21,7 @@ class Terminal{
   public:
     Terminal();
     Terminal(double lat, double lon, double t, std::string n);
-    ~Terminal();
+    virtual ~Terminal();
     const double getLat() const;
     const double getLon() const;
     const double getTMC() const;
@@ -34,7 +34,7 @@ class Terminal{
     double distance(double lat, double lng);
     const std::string getNom();
     void setNom(std::string n);
-    virtual void ajoutLigne(Ligne<Moyens>* l, int f=0)=0;
+    virtual void ajoutLigne(Ligne<Moyens>* l, int f=0);
     void suppLigne(Ligne<Moyens>* l);
 };
 //

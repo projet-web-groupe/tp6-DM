@@ -5,6 +5,8 @@ AeroportInternational::AeroportInternational():Terminal(){}
 AeroportInternational::AeroportInternational(double lat, double lon, double t, std::string n):Terminal(lat,lon,t,n)
 {}
 
+AeroportInternational::~AeroportInternational(){}
+
 const std::list<Ligne<Moyens>*> AeroportInternational::getLiaison() const
 {
 	return liaison;
