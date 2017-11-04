@@ -1,6 +1,8 @@
 #ifndef LIGNE_H
 #define LIGNE_H
 #include "Terminal.h"
+class Terminal;
+class Moyens;
 
 template <class T>
 class Ligne
@@ -22,6 +24,7 @@ public:
 	Terminal * getDestination()const;
 	std::string getType()const;
 };
+
 
 template <class T>
 Ligne<T>::Ligne(
