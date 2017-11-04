@@ -2,16 +2,17 @@
 
 AeroportInternational::AeroportInternational():Terminal(){}
 
-AeroportInternational::AeroportInternational(double lat, double lon):Terminal(lat,lon)
+AeroportInternational::AeroportInternational(double lat, double lon, double t, std::string n):Terminal(lat,lon,t,n)
 {}
 
-const std::list<Ligne<Avion>*> AeroportInternational::getLiaison() const
+const std::list<Ligne<Moyens>*> AeroportInternational::getLiaison() const
 {
 	return liaison;
 }
 
-void AeroportInternational::ajoutLigne(Ligne<Avion>* l)
+void AeroportInternational::ajoutLigne(Ligne<Moyens>* l)
 {
+
 	if(liaison.size()<=4)
 	{
 		liaison.push_back(l);
@@ -22,7 +23,7 @@ void AeroportInternational::ajoutLigne(Ligne<Avion>* l)
 	}
 }
 
-void AeroportInternational::suppLigne(Ligne<Avion>* l)
+void AeroportInternational::suppLigne(Ligne<Moyens>* l)
 {
 	liaison.remove(l);
 }

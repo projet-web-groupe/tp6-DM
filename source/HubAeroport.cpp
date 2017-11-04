@@ -2,27 +2,25 @@
 
 HubAeroport::HubAeroport():Terminal(){}
 
-HubAeroport::HubAeroport(double lat, double lon):Terminal(lat,lon)
+HubAeroport::HubAeroport(double lat, double lon, double t, std::string n):Terminal(lat,lon,t,n)
 {}
 
-const std::list<Ligne<Avion>*> HubAeroport::getLiaison() const
+
+void HubAeroport::ajoutLigne(Ligne<Moyens>* l, int f)
 {
-	return liaison;
+  if(l->getMoyen().getType().compare("Avion")==0)
+  {
+    liaison.push_back(l);
+    if((l->getDestination())->getNom().compare(nom)==0)
+      flux.push_back(f);
+    else
+      flux.push_back(0);
+  }
+  else
+    std::cout<<"erreur, c'est une ligne d'avion"<<std::endl;
 }
 
-void HubAeroport::ajoutLigne(Ligne<Avion>* l)
-{
-	if(liaison.size()<=12)
-	{
-		liaison.push_back(l);
-	}
-	else
-	{
-		std::cout<<"impossible deja relie a un autre aeroport"<<std::endl;
-	}
-}
-
-void HubAeroport::suppLigne(Ligne<Avion>* l)
+void HubAeroport::suppLigne(Ligne<Moyens>* l)
 {
 	liaison.remove(l);
 }

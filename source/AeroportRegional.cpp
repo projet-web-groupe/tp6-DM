@@ -2,15 +2,15 @@
 
 AeroportRegional::AeroportRegional():Terminal(){}
 
-AeroportRegional::AeroportRegional(double lat, double lon):Terminal(lat,lon)
+AeroportRegional::AeroportRegional(double lat, double lon, double t, std::string n):Terminal(lat,lon,t,n)
 {}
 
-const std::list<Ligne<Avion>*> AeroportRegional::getLiaison() const
+const std::list<Ligne<Moyens>*> AeroportRegional::getLiaison() const
 {
 	return liaison;
 }
 
-void AeroportRegional::ajoutLigne(Ligne<Avion>* l)
+void AeroportRegional::ajoutLigne(Ligne<Moyens>* l)
 {
 	if(liaison.size()==0)
 	{
@@ -22,8 +22,9 @@ void AeroportRegional::ajoutLigne(Ligne<Avion>* l)
 	}
 }
 
-void AeroportRegional::suppLigne(Ligne<Avion>* l)
+void AeroportRegional::suppLigne(Ligne<Moyens>* l)
 {
 	liaison.remove(l);
 }
+
 

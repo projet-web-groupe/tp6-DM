@@ -6,13 +6,13 @@
 class AeroportInternational: public Terminal
 {
 	protected:
-		std::list<Ligne<Avion>*> liaison;
+		std::list<Ligne<Moyens>*> liaison;
 	public:
 		AeroportInternational();
-		AeroportInternational(double lat, double lon);
-		const std::list<Ligne<Avion>*> getLiaison() const;
-		void ajoutLigne(Ligne<Avion>* l);
-		void suppLigne(Ligne<Avion>* l);
+		AeroportInternational(double lat, double lon, double t, std::string n);
+		const std::list<Ligne<Moyens>*> getLiaison() const;
+		void ajoutLigne(Ligne<Moyens>* l);
+		void suppLigne(Ligne<Moyens>* l);
 
 };
 

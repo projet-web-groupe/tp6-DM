@@ -1,23 +1,25 @@
 #include "Gare.h"
 
   	Gare::Gare():Terminal()
-  	{
-  		liaison= std::list<Ligne<Train>*>();
-  	}
-  	Gare::Gare(double lat, double lon):Terminal(lat,lon)
-  	{
-  		liaison= std::list<Ligne<Train>*>();
-  	}
-  	const std::list<Ligne<Train>*> Gare::getLiaison() const
-  	{
-  		return liaison;
-  	}
-    void Gare::ajoutLigne(Ligne<Train>* l)
+  	{}
+  	Gare::Gare(double lat, double lon, double t, std::string n):Terminal(lat,lon,t,n)
+  	{}
+
+    void Gare::ajoutLigne(Ligne<Moyens>* l, int f)
     {
-      liaison.push_back(l);
+      if(l->getMoyen().getType().compare("Train")==0)
+      {
+        liaison.push_back(l);
+        if((l->getDestination())->getNom().compare(nom)==0)
+          flux.push_back(f);
+        else
+          flux.push_back(0);
+      }
+      else
+        std::cout<<"erreur, c'est une ligne de train"<<std::endl;
     }
 
-    void Gare::suppLigne(Ligne<Train>* l)
+    void Gare::suppLigne(Ligne<Moyens>* l)
     {
       liaison.remove(l);
     }

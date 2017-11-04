@@ -1,17 +1,16 @@
 #include "Terminal.h"
-Terminal::Terminal():latitude(0),longitude(0),liaison(std::list<Ligne<Moyens>*>()),tempsMoyenCorrespondance(std::list<double>()),flux(std::list<int>()),nom("en construction")
+Terminal::Terminal():latitude(0),longitude(0),liaison(std::list<Ligne<Moyens>*>()),tempsMoyenCorrespondance(0),flux(std::list<int>()),nom("en construction")
 {
 
 }
 
-Terminal::Terminal(double lat, double lon)
+Terminal::Terminal(double lat, double lon, double t, std::string n):tempsMoyenCorrespondance(t)
 {
   latitude=lat;
   longitude= lon;
   liaison= std::list<Ligne<Moyens>*>();
-  tempsMoyenCorrespondance= std::list<double>();
   flux= std::list<int>();
-
+  nom=n;
 }
 
 Terminal:: ~Terminal()
@@ -27,7 +26,7 @@ const double Terminal::getLon() const
 {
   return longitude;
 }
-const std::list<double> Terminal::getTMC() const
+const double Terminal::getTMC() const
 {
   return tempsMoyenCorrespondance;
 }
@@ -47,7 +46,7 @@ void Terminal::setLon(double lon)
 {
   longitude=lon;
 }
-void Terminal::setTMC(std::list<double> l)
+void Terminal::setTMC(double l)
 {
   tempsMoyenCorrespondance=l;
 }
@@ -68,3 +67,5 @@ void Terminal::setNom(std::string n)
   nom=n;
 }
 
+//void ajoutLigne(Ligne<Moyens>* l, int f){}
+//void suppLigne(Ligne<Moyens>* l){}

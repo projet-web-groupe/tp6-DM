@@ -14,28 +14,28 @@ class Terminal{
     double latitude;
     double longitude;
     std::list<Ligne<Moyens>*> liaison;
-    std::list<double> tempsMoyenCorrespondance;
+    double tempsMoyenCorrespondance;
     std::list<int> flux;
     std:: string nom;
 
-
   public:
     Terminal();
-    Terminal(double lat, double lon);
+    Terminal(double lat, double lon, double t, std::string n);
     ~Terminal();
     const double getLat() const;
     const double getLon() const;
-    const std::list<double> getTMC() const;
+    const double getTMC() const;
     const std::list<int> getFlux() const;
     const std::list<Ligne<Moyens>*> getLiaison() const;
-    void ajouterLiaison(Terminal t);
     void setLat(double lat);
     void setLon(double lon);
-    void setTMC(std::list<double> l);
+    void setTMC(double l);
     void setFlux(std::list<int> f);
     double distance(double lat, double lng);
     const std::string getNom();
     void setNom(std::string n);
+    virtual void ajoutLigne(Ligne<Moyens>* l, int f)=0;
+    virtual void suppLigne(Ligne<Moyens>* l)=0;
 };
 //
 

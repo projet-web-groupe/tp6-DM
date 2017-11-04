@@ -5,8 +5,8 @@
 template <class T>
 class Ligne
 {
-	const T& typeTransports;
-
+	
+	T &ref;
 	//Pointeur car relation d'aggregation (destruction d'une ligne != destruction terminal)
 	Terminal *origin;
 	Terminal *destination;
@@ -16,24 +16,25 @@ public:
 	void affiche(void)const;
 	const int getFrequence(void)const;
 
-	Ligne(const Terminal* origin,Terminal *destination, const int frequence = 1/(24*3600));
+	Ligne(const T &r,const Terminal* origin,Terminal *destination, const int frequence = 1/(24*3600));
 	const T& getMoyen()const;
 	Terminal * getOrigin()const;
 	Terminal * getDestination()const;
-
+	std::string getType()const;
 };
 
 template <class T>
 Ligne<T>::Ligne(
+	const T &r,
 	const Terminal* _origin,
 	Terminal *_destination, 
 	const int nbPassagerJour
-	) : origin(_origin), destination(_destination),frequence((nbPassagerJour*24*3600)/typeTransports.getCapacite())
+	) :ref(r),origin(_origin), destination(_destination),frequence((nbPassagerJour*24*3600)/ref.getCapacite())
 {}
 
 template <class T>
 void Ligne<T>::affiche(void)const{
-	std::cout << "Object : Ligne\n\tType de transport :" << typeTransports.getNom() << "\n\torigin : " << origin->getNom() << "\n\tdestination : " << destination->getNom() << "\n\tNombre de passager/jour : " << frequence * typeTransports.getCapacite() * 24*3600 << std::endl;
+	std::cout << "Object : Ligne\n\tType de transport :" << ref.getNom() << "\n\torigin : " << origin->getNom() << "\n\tdestination : " << destination->getNom() << "\n\tNombre de passager/jour : " << frequence * ref.getCapacite() * 24*3600 << std::endl;
 }
 
 template<class T>
@@ -41,7 +42,7 @@ const int Ligne<T>::getFrequence(void)const{return frequence;}
 
 template <class T>
 const T& Ligne<T>::getMoyen()const {
-	return typeTransports;
+	return ref;
 }
 
 
@@ -61,5 +62,7 @@ template <class T>
 Terminal * Ligne<T>::getDestination()const{
 	return destination;
 }
+
+
 
 #endif
