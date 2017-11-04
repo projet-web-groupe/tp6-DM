@@ -11,7 +11,6 @@ class Gare: public Terminal
   	Gare();
   	Gare(double lat, double lon, double t, std::string n);
   	void ajoutLigne(Ligne<Moyens>* l, int f);
-  	void suppLigne(Ligne<Moyens>* l);
 };
 
 

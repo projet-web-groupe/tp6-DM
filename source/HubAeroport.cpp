@@ -8,19 +8,22 @@ HubAeroport::HubAeroport(double lat, double lon, double t, std::string n):Termin
 
 void HubAeroport::ajoutLigne(Ligne<Moyens>* l, int f)
 {
-  if(l->getMoyen().getType().compare("Avion")==0)
-  {
-    liaison.push_back(l);
-    if((l->getDestination())->getNom().compare(nom)==0)
-      flux.push_back(f);
-    else
-      flux.push_back(0);
-  }
-  else
-    std::cout<<"erreur, c'est une ligne d'avion"<<std::endl;
+  if(liaison.size()<=12)
+	{
+		 if(l->getMoyen().getType().compare("Avion")==0)
+	      {
+	        liaison.push_back(l);
+	        if((l->getDestination())->getNom().compare(nom)==0)
+	          flux.push_back(f);
+	        else
+	          flux.push_back(0);
+	      }
+	      else
+	        std::cout<<"erreur, c'est une ligne d'avion"<<std::endl;
+	}
+	else
+	{
+		std::cout<<"impossible deja relie a un autre aeroport"<<std::endl;
+	}
 }
 
-void HubAeroport::suppLigne(Ligne<Moyens>* l)
-{
-	liaison.remove(l);
-}

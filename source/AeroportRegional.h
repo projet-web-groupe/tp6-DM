@@ -12,9 +12,7 @@ class AeroportRegional: public Terminal{
 	public:
 		AeroportRegional();
 		AeroportRegional(double lat, double lon, double t, std::string n);
-		const std::list<Ligne<Moyens>*> getLiaison() const;
-		void ajoutLigne(Ligne<Moyens>* l);
-		void suppLigne(Ligne<Moyens>* l);
+		void ajoutLigne(Ligne<Moyens>* l, int f);
 };
 
 #endif

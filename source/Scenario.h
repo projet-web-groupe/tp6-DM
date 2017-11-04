@@ -3,7 +3,7 @@
 
 #include "Terminal.h"
 
-
+/*
 enum ville_e{
 	Bruxelles = 0,
 	Paris = 1,
@@ -29,5 +29,5 @@ public:
 	void afficherMatrice(void);
 
 };
-
+*/
 #endif

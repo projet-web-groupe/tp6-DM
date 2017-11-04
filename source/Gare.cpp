@@ -19,7 +19,4 @@
         std::cout<<"erreur, c'est une ligne de train"<<std::endl;
     }
 
-    void Gare::suppLigne(Ligne<Moyens>* l)
-    {
-      liaison.remove(l);
-    }
+    

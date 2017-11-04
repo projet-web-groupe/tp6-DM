@@ -1,4 +1,4 @@
-#include "Scenario.h"
+/*#include "Scenario.h"
 
 #include "Terminal.h"
 #include "AeroportInternational.h"
@@ -106,7 +106,7 @@ Scenario::Scenario(int id){
 	for (int i = 0; i < 5; ++i){
 		for (int j = 0; j < 5; ++j){
 			if(M[i][j] != NONE){
-				Term[i].ajouterLiaison(Term[j]);
+				Term[i].ajoutLigne(&Term[j],0);
 			}
 		}
 	}
@@ -125,4 +125,4 @@ void Scenario::afficherMatrice(void){
 		std::cout << std::endl;
 	}
 	std::cout << std::endl;
-}
+}*/

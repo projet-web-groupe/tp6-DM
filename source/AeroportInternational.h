@@ -2,6 +2,7 @@
 #define AEROPORTINTERNATIONAL_H
 #include "Terminal.h"
 #include "Avion.h"
+#include "Ligne.h"
 
 class AeroportInternational: public Terminal
 {
@@ -11,8 +12,7 @@ class AeroportInternational: public Terminal
 		AeroportInternational();
 		AeroportInternational(double lat, double lon, double t, std::string n);
 		const std::list<Ligne<Moyens>*> getLiaison() const;
-		void ajoutLigne(Ligne<Moyens>* l);
-		void suppLigne(Ligne<Moyens>* l);
+		void ajoutLigne(Ligne<Moyens>* l, int f);
 
 };
 

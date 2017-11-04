@@ -5,16 +5,21 @@ AeroportRegional::AeroportRegional():Terminal(){}
 AeroportRegional::AeroportRegional(double lat, double lon, double t, std::string n):Terminal(lat,lon,t,n)
 {}
 
-const std::list<Ligne<Moyens>*> AeroportRegional::getLiaison() const
-{
-	return liaison;
-}
 
-void AeroportRegional::ajoutLigne(Ligne<Moyens>* l)
+void AeroportRegional::ajoutLigne(Ligne<Moyens>* l, int f)
 {
 	if(liaison.size()==0)
 	{
-		liaison.push_back(l);
+		 if(l->getMoyen().getType().compare("Avion")==0)
+	      {
+	        liaison.push_back(l);
+	        if((l->getDestination())->getNom().compare(nom)==0)
+	          flux.push_back(f);
+	        else
+	          flux.push_back(0);
+	      }
+	      else
+	        std::cout<<"erreur, c'est une ligne d'avion"<<std::endl;
 	}
 	else
 	{
@@ -22,9 +27,5 @@ void AeroportRegional::ajoutLigne(Ligne<Moyens>* l)
 	}
 }
 
-void AeroportRegional::suppLigne(Ligne<Moyens>* l)
-{
-	liaison.remove(l);
-}
 
 

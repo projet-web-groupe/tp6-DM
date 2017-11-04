@@ -67,5 +67,21 @@ void Terminal::setNom(std::string n)
   nom=n;
 }
 
-//void ajoutLigne(Ligne<Moyens>* l, int f){}
-//void suppLigne(Ligne<Moyens>* l){}
+/*void ajoutLigne(Ligne<Moyens>* l, int f=0){
+  if(l->getMoyen().getType().compare("aucun")==0)
+      {
+        liaison.push_back(l);
+        if((l->getDestination())->getNom().compare(nom)==0)
+          flux.push_back(f);
+        else
+          flux.push_back(0);
+      }
+      else
+        std::cout<<"erreur, c'est une ligne de rien"<<std::endl;
+}*/
+
+
+void Terminal::suppLigne(Ligne<Moyens>* l)
+{
+  liaison.remove(l);
+}
