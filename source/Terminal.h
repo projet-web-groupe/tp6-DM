@@ -5,9 +5,10 @@
 #include <list>
 #include<cmath>
 #include "Moyens.h"
-template <class T>
+#include "Ligne.h"
+/*template <class T>
 class Ligne;
-
+*/
 class Terminal{
 
   protected:
@@ -22,9 +23,9 @@ class Terminal{
     Terminal();
     Terminal(double lat, double lon, double t, std::string n);
     virtual ~Terminal();
-    const double getLat() const;
-    const double getLon() const;
-    const double getTMC() const;
+    double getLat() const;
+    double getLon() const;
+    double getTMC() const;
     const std::list<int> getFlux() const;
     const std::list<Ligne<Moyens>*> getLiaison() const;
     void setLat(double lat);
@@ -32,7 +33,7 @@ class Terminal{
     void setTMC(double l);
     void setFlux(std::list<int> f);
     double distance(double lat, double lng);
-    const std::string getNom();
+    std::string getNom() const;
     void setNom(std::string n);
     void affiche()const;
     virtual void ajoutLigne(Ligne<Moyens>* l, int f=0);
