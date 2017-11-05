@@ -67,6 +67,10 @@ void Terminal::setNom(std::string n)
   nom=n;
 }
 
+void affiche() const{
+  std::cout<<getNom()<< "de latitude: "<<getLat()<<" et de longitude: "<<getLon()<< <<std::endl;
+}
+
 void Terminal::ajoutLigne(Ligne<Moyens>* l, int f){}
 
 

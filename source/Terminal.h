@@ -34,6 +34,7 @@ class Terminal{
     double distance(double lat, double lng);
     const std::string getNom()const;
     void setNom(std::string n);
+    void affiche()const;
     virtual void ajoutLigne(Ligne<Moyens>* l, int f=0);
     void suppLigne(Ligne<Moyens>* l);
 };
