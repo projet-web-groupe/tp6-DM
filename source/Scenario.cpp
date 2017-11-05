@@ -169,6 +169,7 @@ Voyage * Scenario::buildVoyage(enum ville_e origin, enum ville_e destination){
 	}
 }
 
+
 void Scenario::ajouterLienMatrice(ville_e v1, ville_e v2,typeLien_e l){
 	M[v1][v2] = l;
 	M[v2][v1] = l;
