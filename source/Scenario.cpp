@@ -149,23 +149,37 @@ Scenario::~Scenario(){
 	}
 }
 
-Voyage * Scenario::buildVoyage(enum ville_e origin, enum ville_e destination){
-	bool marque[5] = {false,false,false,false,false};
-	std::list<enum ville_e> solution;
-	std::queue<enum ville_e> q;
-	q.push(origin);
-	marque[origin] = true;
+Voyage * Scenario::buildVoyage(void){
+	bool marque[5];
+	std::list<enum ville_e> li;
+	for (int i = 0; i < 5; ++i)
+	{
+		marque[0] = false;
+		marque[1] = false;
+		marque[2] = false;
+		marque[3] = false;
+		marque[4] = false;
+		li.push_back((enum ville_e)i);
+		marque[i] = true;
 
-	while(!q.empty() && marque[destination] == false){
-		solution.	push_front(q.front());
-		for(int i = 0 ; i < 5; i++)
-		{
-			if(marque[i] == false){
-				q.push((enum ville_e)i);
-				marque[i] = true;
+		while(!li.empty()){
+			//on considère que le graphe parcourut est connexe
+			int j = 0;
+			while(M[l.back()][j] == NONE || marque[j]){
+				j++;
+			}
+			if(j == 5){
+				li.pop_back();
+			}
+			else{
+				li.puch_back((enum ville_e)j);
+				marque[j] = true;
+				v[li.front()][li.back()] = new Voyage(Term[li.front()],Term[li.back()]);
+				for(std::list<enum ville_e>::iterator it = li.begin() ; it != li.end() || it+1 != end(); it++){
+					v[li.front()][li.back()]->addCorrespondance(&(Ligne<Moyens>(Term[*it],Term[*(it+1)])));
+				}
 			}
 		}
-		q.pop();
 	}
 }
 

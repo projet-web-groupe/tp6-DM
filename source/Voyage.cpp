@@ -7,13 +7,18 @@ Voyage::Voyage(const Terminal& _origin, const Terminal& _destination)
 
 void Voyage::addCorrespondance(const Ligne<Moyens>* _correspondance){
 	if ( _correspondance != NULL){
-		correspondance.push_back(_correspondance);
+		correspondance.push_back(new Ligne<Moyens>(_correspondance));
 		correspondance.sort();
 	}
 
 }
 
-Voyage::~Voyage(){}
+Voyage::~Voyage(){
+	for (std::list<const Ligne<Moyens>*>::iterator i = correspondance.begin(); i != correspondance.end(); ++i)
+	{
+		delete *i;
+	}
+}
 
 double Voyage::getTime(unsigned long int flux) const{
 	double duration = 0;
