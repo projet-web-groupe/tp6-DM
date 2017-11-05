@@ -140,7 +140,6 @@ Scenario::Scenario(int id){
 			}
 		}
 	}
-	buildVoyage();
 }
 
 void Scenario::ajouterLienMatrice(ville_e v1, ville_e v2,typeLien_e l){
@@ -165,5 +164,5 @@ void Scenario::affiche(void)const{
 		}
 		std::cout<<"----------------------" << std::endl;
 	}
-	std::cout<<"/////////////////////////////" << std::endl;	
+	std::cout<< "/////////////////////////////" << std::endl;	
 }

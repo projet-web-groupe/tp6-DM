@@ -33,11 +33,7 @@ class Terminal{
     void setTMC(double l);
     void setFlux(std::list<int> f);
     double distance(double lat, double lng);
-<<<<<<< HEAD
-    const std::string getNom()const;
-=======
     std::string getNom() const;
->>>>>>> 75729ab300005806412176aa6d59f2b42fc7f585
     void setNom(std::string n);
     void affiche()const;
     virtual void ajoutLigne(Ligne<Moyens>* l, int f=0);
