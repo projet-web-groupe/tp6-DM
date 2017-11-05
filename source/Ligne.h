@@ -1,6 +1,6 @@
 #ifndef LIGNE_H
 #define LIGNE_H
-#include "Terminal.h"
+//#include "Terminal.h"
 class Terminal;
 class Moyens;
 
@@ -15,14 +15,14 @@ class Ligne
 	//chaque ligne à une frequence (qui peut différer pour un même moyen de transports)
 	const double frequence; //nb transport par seconde
 public:
-	void affiche(void)const;
+	//void affiche(void)const;
 	const int getFrequence(void)const;
 
 	Ligne(T r,Terminal* origin,Terminal *destination, const int frequence = 1/(24*3600));
 	const T& getMoyen()const;
 	Terminal * getOrigin()const;
 	Terminal * getDestination()const;
-	std::string getType()const;
+	//std::string getType()const;
 };
 
 
@@ -35,10 +35,10 @@ Ligne<T>::Ligne(
 	) :ref(r),origin(_origin), destination(_destination),frequence((nbPassagerJour*24*3600)/ref.getCapacite())
 {}
 
-template <class T>
+/*template <class T>
 void Ligne<T>::affiche(void)const{
 	std::cout << "Object : Ligne\n\tType de transport :" << ref.getNom() << "\n\torigin : " << origin->getNom() << "\n\tdestination : " << destination->getNom() << "\n\tNombre de passager/jour : " << frequence * ref.getCapacite() * 24*3600 << std::endl;
-}
+}*/
 
 template<class T>
 const int Ligne<T>::getFrequence(void)const{return frequence;}
