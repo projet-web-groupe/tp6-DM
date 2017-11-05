@@ -1,0 +1,41 @@
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+
+\title{TP6\_DM-CR\_CANO\_COUPPOUSSAMY}
+\author{Cano Gabriel et Couppoussamy Alex}
+\date{\today}
+\begin{document}
+\maketitle
+	\begin{justify}
+		\paragraph{Terminal}
+		\subparagraph{}Cette classe est la classe mère. Plusieurs classes héritent d’elle. Cette classe contient une méthode virtuelle, la méthode ajoutLigne, elle est donc instanciable.\newline
+		\subparagraph{}L’attribut liaison est une liste de pointeurs de Ligne. Ligne est un template. Ici, Ligne a comme argument Moyens. \newline
+		\subparagraph{}L’attribut tempsMoyenCorrespondance est un double qui est le temps moyen à attendre avant de prendre le prochain transport depuis le terminal courant. Nous avons pris la décision de mettre le même temps d’attente quelques soit la destination depuis un terminal.\newline
+		\subparagraph{}L’attribut flux est une liste de nombre de passager qui arrive depuis toutes les lignes qui arrivent dans le terminal courant. L’indice à laquelle figure un flux correspond à l’indice de la ligne à laquelle il correspond. Dans les classes filles, la méthode ajoutLigne(Ligne<Moyens>* l, int f), teste si la ligne arrive au Terminal courant. Si c’est le cas, le flux passé en paramètre est ajouté, sinon 0 est ajouté.\newline
+		\subparagraph{}On déclare un template Ligne au lieu d’inclure le fichier où il y a le template complet car on a inclu Terminal.h dans celui-ci. On a donc voulu éviter l’inclusion infini.\newline
+La méthode suppLigne(Ligne<Moyens>* l), on supprime une ligne de la liste.
+		\paragraph{Gare}
+		\subparagraph{}Cette classe hérite de Terminal et redéfini les constructeurs. Elle implémente la méthode virtuelle de Terminal: ajoutLigne. Cette méthode vérifie que la ligne qu’on ajoute est bien une ligne de train. Puis, on ajoute la ligne à la liste. On ajoute aussi le flux correspondant si la destination de la ligne est le terminal courant.
+		\paragraph{AeroportRegional}
+		\subparagraph{}Tout comme Gare, elle hérite de Terminal et redéfini ajoutLigne, mais vérifie que c’est une ligne d’avion et vérifie que la liste ne soit jamais plus de taille 2.
+		\paragraph{AeroportInternational}
+		\subparagraph{}Cette classe est exactement comme AeroportRegional sauf qu’elle peut avoir jusqu’à 4 lignes d’avion.
+		\paragraph{HubAeroport}
+		\subparagraph{}Cette classe est exactement comme AeroportInternational mais avec la possiblité de contenir 12 lignes.
+		\paragraph{HubMultimodal}
+		\subparagraph{}Cette classe est comme HubAeroport avec en plus une relation de composition avec une gare. En effet, si le HubAeroport est détruit alors la gare aussi.
+		\paragraph{Ligne}
+		\subparagraph{}C’est une classe template qui prend en argument un Moyens (de transport): Une sorte d’avion ou un train. Cette classe contient une référence du moyen de transport de la ligne. Cette référence nous sert à utiliser la fonction qui va nous donner le type du moyen de transport. Il nous donnera aussi sa capacité, ce qui va nous servir à calculer la frequence.
+		\paragraph{Moyens}
+		\subparagraph{}C’est la classe mère des transports. Elle a des attributs qui seront utilisés par ses filles comme la vitesse, l’empreinteCarbone, la capacité et le nom.\newline
+		\subparagraph{}Elle possède 2 méthodes virtuelles: affiche qui est définie dans chaque classe fille pour afficher différentes valeurs et la méthode gettype qui donne le type transport sous la forme d’un string. Elle est redéfinie dans chaque classe fille pour qu’elle renvoie le bon type.
+
+		\paragraph{Voyage}
+		\subparagraph{}Cette classe permet d’utiliser les classes pécédentes car elle permet de se balader d’un terminal à un autre en utilisant un type de ligne en connaisant le terminal de départ et celui de la destination. Puis il ajoute des correspondances jusqu’à atteindre la destination en prenant en compte le flux et l’émission de carbone.
+		\paragraph{Scenario}
+		\subparagraph{}Cette classe est censée regrouper tous les tests et permettre de répondre aux question de l’énoncé cependant cette classes ne fonctionne pas.
+	\end{justify}
+\end{document}
