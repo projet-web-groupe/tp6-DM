@@ -14,7 +14,7 @@ class Voyage {
 public:
 	Voyage(const Terminal& _origin, const Terminal& _destination);
 	~Voyage();
-	void addCorrespondance(const Ligne<Moyens>* correspondance);
+	void addCorrespondance(Ligne<Moyens>* correspondance);
 	double getTime(unsigned long int flux) const;
 	double getEmpreinteCarbone(unsigned long int flux)const;
 	void affiche()const;

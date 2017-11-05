@@ -24,6 +24,8 @@ class Scenario {
 	std::list<Ligne<Moyens> *> l;
 	Voyage *v[5][5];
 	void ajouterLienMatrice(enum ville_e, enum ville_e,enum typeLien_e);
+	void buildVoyage(int id);
+	void ajouterLigneVoyage(enum ville_e o1, enum ville_e d1, enum ville_e o2, enum ville_e d2);
 public:
 	static ville_e ville;
 	static typeLien_e typeLien;

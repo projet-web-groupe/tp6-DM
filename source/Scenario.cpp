@@ -43,22 +43,22 @@ Scenario::Scenario(int id){
 	}
 	switch (id){
 		case 1:
-		Term[Paris] = HubAeroport();
-		Term[Bruxelles] = AeroportRegional();
-		Term[Lyon] = AeroportInternational();
-		Term[Rome] = AeroportRegional();
-		Term[Naple] = AeroportRegional();
+		Term[Paris] = HubAeroport(48.8534,2.2488,0,"Paris");
+		Term[Bruxelles] = AeroportRegional(50.8466,4.3528,0,"Bruxelles");
+		Term[Lyon] = AeroportInternational(45.75,4.85,0,"Lyon");
+		Term[Rome] = AeroportRegional(41.098251,12.492373,0,"Rome");
+		Term[Naple] = AeroportRegional(40.854294,14.305573,0,"Naple");
 		ajouterLienMatrice(Paris,Lyon,AVION);
 		ajouterLienMatrice(Rome,Naple,AVION);
 		ajouterLienMatrice(Rome,Paris,AVION);
 		ajouterLienMatrice(Paris,Bruxelles,AVION);
 		break;
 		case 2:
-		Term[Paris] = HubMultimodal();
-		Term[Bruxelles] = Gare();
-		Term[Lyon] = AeroportRegional();
-		Term[Rome] = AeroportInternational();
-		Term[Naple] = AeroportRegional();
+		Term[Paris] = HubMultimodal(48.8534,2.2488,0,"Paris");
+		Term[Bruxelles] = Gare(50.8466,4.3528,0,"Bruxelles");
+		Term[Lyon] = AeroportRegional(45.75,4.85,0,"Lyon");
+		Term[Rome] = AeroportInternational(41.098251,12.492373,0,"Rome");
+		Term[Naple] = AeroportRegional(40.854294,14.305573,0,"Naple");
 
 		ajouterLienMatrice(Naple,Rome,AVION);
 		ajouterLienMatrice(Rome,Paris,AVION);
@@ -66,11 +66,11 @@ Scenario::Scenario(int id){
 		ajouterLienMatrice(Paris,Bruxelles,TRAIN);
 		break;
 		case 3:
-		Term[Paris] = HubMultimodal();
-		Term[Bruxelles] = Gare();
-		Term[Lyon] = Gare();
-		Term[Rome] = HubMultimodal();
-		Term[Naple] = Gare();
+		Term[Paris] = HubMultimodal(48.8534,2.2488,0,"Paris");
+		Term[Bruxelles] = Gare(50.8466,4.3528,0,"Bruxelles");
+		Term[Lyon] = Gare(45.75,4.85,0,"Lyon");
+		Term[Rome] = HubMultimodal(41.098251,12.492373,0,"Rome");
+		Term[Naple] = Gare(40.854294,14.305573,0,"Naple");
 
 		ajouterLienMatrice(Naple,Rome,TRAIN);
 		ajouterLienMatrice(Rome,Lyon,TRAIN);
@@ -79,11 +79,11 @@ Scenario::Scenario(int id){
 
 		break;
 		case 4:
-		Term[Paris] = AeroportInternational();
-		Term[Naple] = AeroportInternational();
-		Term[Bruxelles] = AeroportInternational();
-		Term[Rome] = AeroportInternational();
-		Term[Lyon] = AeroportInternational();
+		Term[Paris] = AeroportInternational(48.8534,2.2488,0,"Paris");
+		Term[Bruxelles] = AeroportInternational(50.8466,4.3528,0,"Bruxelles");
+		Term[Lyon] = AeroportInternational(45.75,4.85,0,"Lyon");
+		Term[Rome] = AeroportInternational(41.098251,12.492373,0,"Rome");
+		Term[Naple] = AeroportInternational(40.854294,14.305573,0,"Naple");
 
 		for (int i = 0; i < 5; ++i){
 			for (int j = 0; j < 5; ++j){
@@ -95,11 +95,11 @@ Scenario::Scenario(int id){
 		}
 		break;
 		case 5:
-		Term[Paris] = Gare();
-		Term[Naple] = Gare();
-		Term[Bruxelles] = Gare();
-		Term[Rome] = Gare();
-		Term[Lyon] = Gare();
+		Term[Paris] = Gare(48.8534,2.2488,0,"Paris");
+		Term[Bruxelles] = Gare(50.8466,4.3528,0,"Bruxelles");
+		Term[Lyon] = Gare(45.75,4.85,0,"Lyon");
+		Term[Rome] = Gare(41.098251,12.492373,0,"Rome");
+		Term[Naple] = Gare(40.854294,14.305573,0,"Naple");
 
 		ajouterLienMatrice(Bruxelles,Paris,TRAIN);
 		ajouterLienMatrice(Paris,Lyon,TRAIN);
@@ -107,11 +107,11 @@ Scenario::Scenario(int id){
 		ajouterLienMatrice(Rome,Naple,TRAIN);
 		break;
 		case 6:
-		Term[Paris] = HubAeroport();
-		Term[Naple] = AeroportInternational();
-		Term[Bruxelles] = AeroportInternational();
-		Term[Rome] = AeroportInternational();
-		Term[Lyon] = AeroportInternational();
+		Term[Paris] = HubAeroport(48.8534,2.2488,0,"Paris");
+		Term[Bruxelles] = AeroportInternational(50.8466,4.3528,0,"Bruxelles");
+		Term[Lyon] = AeroportInternational(45.75,4.85,0,"Lyon");
+		Term[Rome] = AeroportInternational(41.098251,12.492373,0,"Rome");
+		Term[Naple] = AeroportInternational(40.854294,14.305573,0,"Naple");
 
 		ajouterLienMatrice(Paris,Lyon,TRAIN);
 		ajouterLienMatrice(Paris,Rome,TRAIN);
@@ -122,6 +122,7 @@ Scenario::Scenario(int id){
 	for (int i = 0; i < 5; ++i){
 		for (int j = 0; j < 5; ++j){
 			Ligne<Moyens> *ligne = NULL;
+			puts("debug");
 			switch(M[i][j]){
 				case TRAIN:
 				ligne = new Ligne<Moyens>(Train(),Term + i, Term + j);
@@ -140,6 +141,7 @@ Scenario::Scenario(int id){
 			}
 		}
 	}
+	buildVoyage(id);
 }
 
 void Scenario::ajouterLienMatrice(ville_e v1, ville_e v2,typeLien_e l){
@@ -160,9 +162,92 @@ void Scenario::afficherMatrice(void)const{
 void Scenario::affiche(void)const{
 	for (int i = 0; i < 5; ++i){
 		for (int j = 0; j < 5; ++j){
-			v[i][j]->affiche();
+			if(v[i][j] != NULL){
+				v[i][j]->affiche();
+			}
+			//std::cout << v[i][j] << "\t";
+
+			//std::cout<< "--"<<i+j<<"--"<< v[i][j] << std::endl;
 		}
-		std::cout<<"----------------------" << std::endl;
+		std::cout << std::endl;
 	}
-	std::cout<< "/////////////////////////////" << std::endl;	
+}
+
+void Scenario::buildVoyage(int id){
+	for (int i = 0; i < 5; ++i){
+		for (int j = 0; j < 5; ++j){
+			if (i != j){
+				v[i][j] = new Voyage(Term[i],Term[j]);
+			}
+			else{
+				v[i][j] = NULL;
+			}
+		}
+	}
+	switch(id){
+		case 1:
+		ajouterLigneVoyage(Bruxelles,Paris,Bruxelles,Paris);
+		
+		ajouterLigneVoyage(Bruxelles,Lyon,Bruxelles,Paris);
+		ajouterLigneVoyage(Bruxelles,Lyon,Paris,Lyon);
+
+		ajouterLigneVoyage(Bruxelles,Rome,Bruxelles,Paris);
+		ajouterLigneVoyage(Bruxelles,Rome,Paris,Rome);
+		
+		ajouterLigneVoyage(Bruxelles,Naple,Bruxelles,Paris);
+		ajouterLigneVoyage(Bruxelles,Naple,Paris,Rome);
+		ajouterLigneVoyage(Bruxelles,Naple,Rome,Naple);
+
+		
+		ajouterLigneVoyage(Paris,Lyon,Paris,Lyon);
+
+		ajouterLigneVoyage(Paris,Rome,Paris,Rome);
+		
+		ajouterLigneVoyage(Paris,Naple,Paris,Rome);
+		ajouterLigneVoyage(Paris,Naple,Rome,Naple);
+
+		
+		ajouterLigneVoyage(Lyon,Rome,Lyon,Paris);
+		ajouterLigneVoyage(Lyon,Rome,Paris,Rome);
+
+		ajouterLigneVoyage(Lyon,Naple,Lyon,Paris);
+		ajouterLigneVoyage(Lyon,Naple,Paris,Rome);
+		ajouterLigneVoyage(Lyon,Naple,Rome,Naple);
+
+		
+		ajouterLigneVoyage(Rome,Naple,Rome,Naple);
+
+		break;
+	}
+}
+
+void Scenario::ajouterLigneVoyage(enum ville_e o1, enum ville_e d1, enum ville_e o2, enum ville_e d2){
+	Ligne<Moyens> *ligne = NULL;
+	switch(M[o1][d1]){
+		case TRAIN:
+		ligne = new Ligne<Moyens>(Train(),Term + (int)o2, Term + (int)d2);
+		v[o1][d1]->addCorrespondance(ligne);
+		break;
+		case AVION:
+		ligne = new Ligne<Moyens>(Avion(),Term + (int)o2, Term + (int)d2);
+		v[o1][d1]->addCorrespondance(ligne);
+		break;
+		case AVIONELECTRIQUE:
+		ligne = new Ligne<Moyens>(AvionElec(),Term + (int)o2, Term + (int)d2);
+		v[o1][d1]->addCorrespondance(ligne);
+	}
+
+	switch(M[d1][o1]){
+		case TRAIN:
+		ligne = new Ligne<Moyens>(Train(),Term + (int)d2, Term + (int)o2);
+		v[d1][o1]->addCorrespondance(ligne);
+		break;
+		case AVION:
+		ligne = new Ligne<Moyens>(Avion(),Term + (int)d2, Term + (int)o2);
+		v[d1][o1]->addCorrespondance(ligne);
+		break;
+		case AVIONELECTRIQUE:
+		ligne = new Ligne<Moyens>(AvionElec(),Term + (int)d2, Term + (int)o2);
+		v[d1][o1]->addCorrespondance(ligne);
+	}
 }

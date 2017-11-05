@@ -5,7 +5,7 @@
 Voyage::Voyage(const Terminal& _origin, const Terminal& _destination) 
 : origin(_origin), destination(_destination){}
 
-void Voyage::addCorrespondance(const Ligne<Moyens>* _correspondance){
+void Voyage::addCorrespondance(Ligne<Moyens>* _correspondance){
 	if ( _correspondance != NULL){
 		correspondance.push_back(new Ligne<Moyens>(*_correspondance));
 		correspondance.sort();
