@@ -42,6 +42,10 @@ double Voyage::getEmpreinteCarbone(unsigned long int flux)const{
 	return empreinte;
 }
 
-void affiche() const{
-	std::cout<<"Terminal d'origine:\n"<<origin.affiche()<<"\n Terminal de destination:\n"<<destination.affiche()<<std::endl;
+void Voyage::affiche() const{
+	std::cout << "Terminal d'origine:\n";
+	origin.affiche();
+	std::cout <<"\n Terminal de destination:\n";
+	destination.affiche();
+	std::cout<< std::endl;
 }

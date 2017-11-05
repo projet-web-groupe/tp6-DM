@@ -33,6 +33,7 @@ public:
 	Scenario(int id);
 	~Scenario();
 	void afficherMatrice(void)const;
+	void affiche(void)const;
 
 
 };
