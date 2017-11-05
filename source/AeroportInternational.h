@@ -11,7 +11,7 @@ class AeroportInternational: public Terminal
 		AeroportInternational(double lat, double lon, double t, std::string n);
 		~AeroportInternational();
 		const std::list<Ligne<Moyens>*> getLiaison() const;
-		void ajoutLigne(Ligne<Moyens>* l, int f);
+		void ajoutLigne(Ligne<Moyens>* l, int f = 0);
 
 };
 

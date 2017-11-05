@@ -75,10 +75,11 @@ void Terminal::affiche() const{
   {
     std::cout << (*it)->getMoyen().getType()<<" qui va de "<<(*it)->getOrigin()->getNom()<<" a "<<(*it)->getDestination()->getNom()<<"\n"<<std::endl;
   }
-
 }
 
-void Terminal::ajoutLigne(Ligne<Moyens>* l, int f){}
+void Terminal::ajoutLigne(Ligne<Moyens>* l, int f){
+  std::cout << "debug  " << nom << std::endl;
+}
 
 
 void Terminal::suppLigne(Ligne<Moyens>* l)
