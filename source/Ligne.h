@@ -8,7 +8,7 @@ template <class T>
 class Ligne
 {
 	
-	T &ref;
+	Moyens ref;
 	//Pointeur car relation d'aggregation (destruction d'une ligne != destruction terminal)
 	Terminal *origin;
 	Terminal *destination;
@@ -18,7 +18,7 @@ public:
 	void affiche(void)const;
 	const int getFrequence(void)const;
 
-	Ligne(const T &r,const Terminal* origin,Terminal *destination, const int frequence = 1/(24*3600));
+	Ligne(T r,Terminal* origin,Terminal *destination, const int frequence = 1/(24*3600));
 	const T& getMoyen()const;
 	Terminal * getOrigin()const;
 	Terminal * getDestination()const;
@@ -28,8 +28,8 @@ public:
 
 template <class T>
 Ligne<T>::Ligne(
-	const T &r,
-	const Terminal* _origin,
+	T r,
+	Terminal* _origin,
 	Terminal *_destination, 
 	const int nbPassagerJour
 	) :ref(r),origin(_origin), destination(_destination),frequence((nbPassagerJour*24*3600)/ref.getCapacite())
@@ -62,7 +62,7 @@ Terminal * Ligne<T>::getOrigin()const{
 	return origin;
 }
 template <class T>
-Terminal * Ligne<T>::getDestination()const{
+ Terminal * Ligne<T>::getDestination()const{
 	return destination;
 }
 

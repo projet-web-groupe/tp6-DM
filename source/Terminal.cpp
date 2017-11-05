@@ -58,7 +58,7 @@ double Terminal::distance(double lat, double lon)
 {
   return 60*acos(sin(latitude)*sin(lat)+cos(latitude)*cos(lat)*cos(lon-longitude));
 }
-const std::string Terminal::getNom()
+const std::string Terminal::getNom()const
 {
   return nom;
 }

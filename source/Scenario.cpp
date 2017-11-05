@@ -1,4 +1,4 @@
-/*#include "Scenario.h"
+#include "Scenario.h"
 
 #include "Terminal.h"
 #include "AeroportInternational.h"
@@ -6,7 +6,13 @@
 #include "Gare.h"
 #include "HubAeroport.h"
 #include "HubMultimodal.h"
+#include "Train.h"
+#include "Avion.h"
+#include "AvionElec.h"
+#include "Voyage.h"
 #include <iostream>
+#include <list>
+#include <queue>
 
 enum ville_e Scenario::ville;
 enum typeLien_e Scenario::typeLien;
@@ -18,6 +24,16 @@ int Scenario::flux[5][5] = {
 	{5000	,9000	,6000	,0		,11000},
 	{2500	,5000	,3000	,10000	,0}
 };
+
+void Scenario::afficherFlux(){
+	for (int i = 0; i < 5; ++i){
+		for (int j = 0; j < 5; ++j){
+			std::cout << flux[i][j] << "\t";
+		}
+		std::cout << std::endl;
+	}
+	std::cout << std::endl;
+}
 
 Scenario::Scenario(int id){
 	for (int i = 0; i < 5; ++i){
@@ -105,10 +121,51 @@ Scenario::Scenario(int id){
 	}
 	for (int i = 0; i < 5; ++i){
 		for (int j = 0; j < 5; ++j){
-			if(M[i][j] != NONE){
-				Term[i].ajoutLigne(&Term[j],0);
+			Ligne<Moyens> *ligne = NULL;
+			switch(M[i][j]){
+				case TRAIN:
+				ligne = new Ligne<Moyens>(Train(),Term + i, Term + j);
+				l.push_front(ligne);
+				Term[i].ajoutLigne(ligne);
+				break;
+				case AVION:
+				ligne = new Ligne<Moyens>(Avion(),Term + i, Term + j);
+				l.push_front(ligne);
+				Term[i].ajoutLigne(ligne);
+				break;
+				case AVIONELECTRIQUE:
+				ligne = new Ligne<Moyens>(AvionElec(),Term + i, Term + j);
+				l.push_front(ligne);
+				Term[i].ajoutLigne(ligne);
 			}
 		}
+	}
+}
+
+Scenario::~Scenario(){
+	while(!l.empty()){
+		delete l.front();
+		l.pop_front();
+	}
+}
+
+Voyage * Scenario::buildVoyage(enum ville_e origin, enum ville_e destination){
+	bool marque[5] = {false,false,false,false,false};
+	std::list<enum ville_e> solution;
+	std::queue<enum ville_e> q;
+	q.push(origin);
+	marque[origin] = true;
+
+	while(!q.empty() && marque[destination] == false){
+		solution.	push_front(q.front());
+		for(int i = 0 ; i < 5; i++)
+		{
+			if(marque[i] == false){
+				q.push((enum ville_e)i);
+				marque[i] = true;
+			}
+		}
+		q.pop();
 	}
 }
 
@@ -117,7 +174,7 @@ void Scenario::ajouterLienMatrice(ville_e v1, ville_e v2,typeLien_e l){
 	M[v2][v1] = l;
 }
 
-void Scenario::afficherMatrice(void){
+void Scenario::afficherMatrice(void)const{
 	for (int i = 0; i < 5; ++i){
 		for (int j = 0; j < 5; ++j){
 			std::cout << M[i][j] << " ";
@@ -125,4 +182,4 @@ void Scenario::afficherMatrice(void){
 		std::cout << std::endl;
 	}
 	std::cout << std::endl;
-}*/
+}
