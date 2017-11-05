@@ -1,5 +1,5 @@
 CC = g++
-CCFLAGS= -Wall -pedantic -ggdb
+CCFLAGS= -Wall -pedantic -std=c++11 -ggdb
 EXTC = cpp
 EXTH = h
 EXECUTABLE = DM.exe

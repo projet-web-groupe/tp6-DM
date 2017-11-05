@@ -8,13 +8,12 @@
 class AeroportRegional: public Terminal{
 
 	protected:
-		std::list<Ligne<Avion>*> liaison;
+		std::list<Ligne<Moyens>*> liaison;
 	public:
 		AeroportRegional();
-		AeroportRegional(double lat, double lon);
-		const std::list<Ligne<Avion>*> getLiaison() const;
-		void ajoutLigne(Ligne<Avion>* l);
-		void suppLigne(Ligne<Avion>* l);
+		AeroportRegional(double lat, double lon, double t, std::string n);
+		~AeroportRegional();
+		void ajoutLigne(Ligne<Moyens>* l, int f);
 };
 
 #endif

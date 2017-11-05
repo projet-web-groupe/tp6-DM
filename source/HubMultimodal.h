@@ -7,8 +7,9 @@ class HubMultimodal: public HubAeroport{
 	Gare gare;
 	public:
 		HubMultimodal();
-		HubMultimodal(double lat, double lon);
-		void ajouterUneliaisonGare(Ligne<Train>* l);
+		HubMultimodal(double lat, double lon, double t, std::string n);
+		~HubMultimodal();
+		void ajouterUneliaisonGare(Ligne<Moyens>* l, int f);
 };
 
 #endif

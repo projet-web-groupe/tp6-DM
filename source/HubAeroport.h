@@ -2,17 +2,18 @@
 #define HUBAEROPORT_H
 #include "Avion.h"
 #include "Terminal.h"
+#include "Ligne.h"
 
 class HubAeroport: public Terminal{
 
-	protected:
-		std::list<Ligne<Avion>*> liaison;
+	
 	public:
 		HubAeroport();
-		HubAeroport(double lat, double lon);
-		const std::list<Ligne<Avion>*> getLiaison() const;
-		void ajoutLigne(Ligne<Avion>* l);
-		void suppLigne(Ligne<Avion>* l);
+		HubAeroport(double lat, double lon, double t, std::string n);
+		~HubAeroport();
+		const std::list<Ligne<Moyens>*> getLiaison() const;
+		void ajoutLigne(Ligne<Moyens>* l, int f);
+		void suppLigne(Ligne<Moyens>* l);
 
 };
 

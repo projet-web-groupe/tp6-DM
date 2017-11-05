@@ -26,3 +26,4 @@ const std::string& Moyens::getNom(void)const{
 }
 
 void Moyens::affiche(void)const{}
+std::string Moyens::getType()const{return "aucun";}

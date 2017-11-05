@@ -2,17 +2,16 @@
 #define AEROPORTINTERNATIONAL_H
 #include "Terminal.h"
 #include "Avion.h"
+#include "Ligne.h"
 
 class AeroportInternational: public Terminal
 {
-	protected:
-		std::list<Ligne<Avion>*> liaison;
 	public:
 		AeroportInternational();
-		AeroportInternational(double lat, double lon);
-		const std::list<Ligne<Avion>*> getLiaison() const;
-		void ajoutLigne(Ligne<Avion>* l);
-		void suppLigne(Ligne<Avion>* l);
+		AeroportInternational(double lat, double lon, double t, std::string n);
+		~AeroportInternational();
+		const std::list<Ligne<Moyens>*> getLiaison() const;
+		void ajoutLigne(Ligne<Moyens>* l, int f);
 
 };
 
