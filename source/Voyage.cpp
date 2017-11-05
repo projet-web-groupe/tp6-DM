@@ -7,14 +7,14 @@ Voyage::Voyage(const Terminal& _origin, const Terminal& _destination)
 
 void Voyage::addCorrespondance(const Ligne<Moyens>* _correspondance){
 	if ( _correspondance != NULL){
-		correspondance.push_back(new Ligne<Moyens>(_correspondance));
+		correspondance.push_back(new Ligne<Moyens>(*_correspondance));
 		correspondance.sort();
 	}
 
 }
 
 Voyage::~Voyage(){
-	for (std::list<const Ligne<Moyens>*>::iterator i = correspondance.begin(); i != correspondance.end(); ++i)
+	for (std::list<Ligne<Moyens>*>::iterator i = correspondance.begin(); i != correspondance.end(); ++i)
 	{
 		delete *i;
 	}
@@ -24,7 +24,7 @@ double Voyage::getTime(unsigned long int flux) const{
 	double duration = 0;
 	double distance;
 	double nbVoyage;
-	for(std::list<const Ligne<Moyens> *>::const_iterator it = correspondance.begin(); it != correspondance.end(); it++){
+	for(std::list<Ligne<Moyens> *>::const_iterator it = correspondance.begin(); it != correspondance.end(); it++){
 		distance = (*it)->getOrigin()->distance((*it)->getDestination()->getLat(),(*it)->getDestination()->getLon());
 		nbVoyage = ceil(flux/(*it)->getMoyen().getCapacite());
 		duration += nbVoyage * (distance/(*it)->getMoyen().getVitesse());
@@ -35,7 +35,7 @@ double Voyage::getTime(unsigned long int flux) const{
 double Voyage::getEmpreinteCarbone(unsigned long int flux)const{
 	double empreinte = 0;
 	double nbVoyage;
-	for(std::list<const Ligne<Moyens> *>::const_iterator it = correspondance.begin(); it != correspondance.end(); it++){
+	for(std::list<Ligne<Moyens> *>::const_iterator it = correspondance.begin(); it != correspondance.end(); it++){
 		nbVoyage = ceil(flux/(*it)->getMoyen().getCapacite());
 		empreinte += nbVoyage * (*it)->getMoyen().getEmpreinteCarbone();
 	}

@@ -10,7 +10,7 @@ class Voyage {
 	const Terminal& origin;
 	const Terminal& destination;
 	//pointeur car destruction d'un voyage != destruction 
-	std::list<const Ligne<Moyens>*> correspondance;
+	std::list<Ligne<Moyens>*> correspondance;
 public:
 	Voyage(const Terminal& _origin, const Terminal& _destination);
 	~Voyage();

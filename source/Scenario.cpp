@@ -140,6 +140,7 @@ Scenario::Scenario(int id){
 			}
 		}
 	}
+	buildVoyage();
 }
 
 Scenario::~Scenario(){
@@ -149,7 +150,7 @@ Scenario::~Scenario(){
 	}
 }
 
-Voyage * Scenario::buildVoyage(void){
+void Scenario::buildVoyage(void){
 	bool marque[5];
 	std::list<enum ville_e> li;
 	for (int i = 0; i < 5; ++i)
@@ -162,21 +163,52 @@ Voyage * Scenario::buildVoyage(void){
 		li.push_back((enum ville_e)i);
 		marque[i] = true;
 
+
 		while(!li.empty()){
 			//on considère que le graphe parcourut est connexe
 			int j = 0;
-			while(M[l.back()][j] == NONE || marque[j]){
+			while((M[li.back()][j] == NONE || marque[j]) && j < 5) {
 				j++;
+				/*switch(M[li.back()][j]){
+					case TRAIN:
+					printf("debug : (%i,%i) = Train (%s)\n",li.back(),j,(marque[j])?"true":"false");
+					break;
+					case AVION:
+					printf("debug : (%i,%i) = Avion (%s)\n",li.back(),j,(marque[j])?"true":"false");
+					break;
+					case AVIONELECTRIQUE:
+					printf("debug : (%i,%i) = AvionElec (%s)\n",li.back(),j,(marque[j])?"true":"false");
+					break;
+					default:
+					printf("debug : (%i,%i) = none (%s)\n",li.back(),j,(marque[j])?"true":"false");
+				}*/
 			}
 			if(j == 5){
 				li.pop_back();
 			}
 			else{
-				li.puch_back((enum ville_e)j);
+				li.push_back((enum ville_e)j);
 				marque[j] = true;
 				v[li.front()][li.back()] = new Voyage(Term[li.front()],Term[li.back()]);
-				for(std::list<enum ville_e>::iterator it = li.begin() ; it != li.end() || it+1 != end(); it++){
-					v[li.front()][li.back()]->addCorrespondance(&(Ligne<Moyens>(Term[*it],Term[*(it+1)])));
+				for(std::list<enum ville_e>::iterator it = li.begin() ; it != li.end();){
+					Ligne<Moyens> *ligne = NULL;
+					switch(M[li.front()][li.back()]){
+						case TRAIN:
+						ligne = new Ligne<Moyens>((Moyens)Train(),&Term[*it],&Term[*(++it)]);
+						v[li.front()][li.back()]->addCorrespondance(ligne);
+						break;
+						case AVION:
+						ligne = new Ligne<Moyens>((Moyens)Avion(),&Term[*it],&Term[*(++it)]);
+						v[li.front()][li.back()]->addCorrespondance(ligne);
+						break;
+						case AVIONELECTRIQUE:
+						ligne = new Ligne<Moyens>((Moyens)AvionElec(),&Term[*it],&Term[*(++it)]);
+						v[li.front()][li.back()]->addCorrespondance(ligne);
+						break;
+						default:
+						ligne = new Ligne<Moyens>((Moyens)AvionElec(),&Term[*it],&Term[*(++it)]);
+					}
+					delete ligne;
 				}
 			}
 		}
