@@ -4,36 +4,38 @@
 #include <string>
 #include <list>
 #include<cmath>
-#include "Ligne.h"
+#include "Moyens.h"
+template <class T>
+class Ligne;
 
 class Terminal{
 
   protected:
     double latitude;
     double longitude;
-    std::list<Ligne<Terminal>*> liaison;
-    std::list<double> tempsMoyenCorrespondance;
+    std::list<Ligne<Moyens>*> liaison;
+    double tempsMoyenCorrespondance;
     std::list<int> flux;
     std:: string nom;
 
-
   public:
     Terminal();
-    Terminal(double lat, double lon);
-    ~Terminal();
+    Terminal(double lat, double lon, double t, std::string n);
+    virtual ~Terminal();
     const double getLat() const;
     const double getLon() const;
-    const std::list<double> getTMC() const;
+    const double getTMC() const;
     const std::list<int> getFlux() const;
-    const std::list<Ligne<Terminal>*> getLiaison() const;
-    void ajouterLiaison(Terminal t);
+    const std::list<Ligne<Moyens>*> getLiaison() const;
     void setLat(double lat);
     void setLon(double lon);
-    void setTMC(std::list<double> l);
+    void setTMC(double l);
     void setFlux(std::list<int> f);
     double distance(double lat, double lng);
     const std::string getNom();
     void setNom(std::string n);
+    virtual void ajoutLigne(Ligne<Moyens>* l, int f=0);
+    void suppLigne(Ligne<Moyens>* l);
 };
 //
 

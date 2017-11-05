@@ -17,6 +17,7 @@ protected:
 		);
 public:
 	virtual void affiche(void)const;
+	virtual std::string getType()const;
 	const unsigned int& getCapacite(void)const;
 	const unsigned int& getVitesse(void)const;
 	const double& getEmpreinteCarbone(void)const;
