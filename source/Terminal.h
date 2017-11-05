@@ -34,6 +34,7 @@ class Terminal{
     double distance(double lat, double lng);
     const std::string getNom();
     void setNom(std::string n);
+    void affiche()const;
 };
 //
 
