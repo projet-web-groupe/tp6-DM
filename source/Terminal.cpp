@@ -1,5 +1,5 @@
 #include "Terminal.h"
-Terminal::Terminal():latitude(0),longitude(0),liaison(std::list<Ligne<Moyens>*>()),tempsMoyenCorrespondance(0),flux(std::list<int>()),nom("en construction")
+Terminal::Terminal():latitude(0),longitude(0),liaison(std::list<Ligne<Moyens>*>()),tempsMoyenCorrespondance(0),flux(std::list<int>()),nom("none")
 {
 
 }
@@ -11,6 +11,7 @@ Terminal::Terminal(double lat, double lon, double t, std::string n):tempsMoyenCo
   liaison= std::list<Ligne<Moyens>*>();
   flux= std::list<int>();
   nom=n;
+  //std::cout << n << std::endl;
 }
 
 Terminal:: ~Terminal()
@@ -69,15 +70,16 @@ void Terminal::setNom(std::string n)
 
 void Terminal::affiche() const{
   std::list<Ligne<Moyens>*>::const_iterator it;
-  std::cout<<getNom()<< "de latitude: "<<getLat()<<" et de longitude: "<<getLon()<<" de temps moyen d'attente pour une correspondance: "<<getTMC()<<" . Voici sa desserte:" <<std::endl;
+  std::cout<<getNom()<< " de latitude: "<<getLat()<<" et de longitude: "<<getLon()<<" de temps moyen d'attente pour une correspondance: "<<getTMC()<<" . Voici sa desserte:" <<std::endl;
   for (it = liaison.begin(); it != liaison.end(); it++)
   {
     std::cout << (*it)->getMoyen().getType()<<" qui va de "<<(*it)->getOrigin()->getNom()<<" a "<<(*it)->getDestination()->getNom()<<"\n"<<std::endl;
   }
-
 }
 
-void Terminal::ajoutLigne(Ligne<Moyens>* l, int f){}
+void Terminal::ajoutLigne(Ligne<Moyens>* l, int f){
+  std::cout << "debug  " << nom << std::endl;
+}
 
 
 void Terminal::suppLigne(Ligne<Moyens>* l)

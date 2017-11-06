@@ -10,11 +10,11 @@ class Voyage {
 	const Terminal& origin;
 	const Terminal& destination;
 	//pointeur car destruction d'un voyage != destruction 
-	std::list<const Ligne<Moyens>*> correspondance;
+	std::list<Ligne<Moyens>*> correspondance;
 public:
 	Voyage(const Terminal& _origin, const Terminal& _destination);
 	~Voyage();
-	void addCorrespondance(const Ligne<Moyens>* correspondance);
+	void addCorrespondance(Ligne<Moyens>* correspondance);
 	double getTime(unsigned long int flux) const;
 	double getEmpreinteCarbone(unsigned long int flux)const;
 	void affiche()const;
