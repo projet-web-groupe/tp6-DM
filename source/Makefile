@@ -1,8 +1,8 @@
 CC = g++
-CCFLAGS= -Wall -pedantic -std=c++11 -ggdb
+CCFLAGS= -Wall -pedantic -std=c++11
 EXTC = cpp
 EXTH = h
-EXECUTABLE = DM.exe
+EXECUTABLE = TP6-DM_CANO_COUPPOUSSAMY.exe
 
 SRC = $(wildcard *.$(EXTC))
 HDR = $(wildcard *.$(EXTH))

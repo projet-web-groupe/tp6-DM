@@ -10,12 +10,13 @@
 \begin{document}
 \maketitle
 	\begin{justify}
+	\section {Partie A et B (Implémentation)}
 		\paragraph{Terminal}
-		\subparagraph{}Cette classe est la classe mère. Plusieurs classes héritent d’elle. Cette classe contient une méthode virtuelle, la méthode ajoutLigne, elle est donc instanciable.\newline
+		\subparagraph{}Cette classe est la classe mère. Plusieurs classes héritent d’elle. Cette classe contient une méthode virtuelle, la méthode ajoutLigne, elle est donc inconstatable.\newline
 		\subparagraph{}L’attribut liaison est une liste de pointeurs de Ligne. Ligne est un template. Ici, Ligne a comme argument Moyens. \newline
 		\subparagraph{}L’attribut tempsMoyenCorrespondance est un double qui est le temps moyen à attendre avant de prendre le prochain transport depuis le terminal courant. Nous avons pris la décision de mettre le même temps d’attente quelques soit la destination depuis un terminal.\newline
 		\subparagraph{}L’attribut flux est une liste de nombre de passager qui arrive depuis toutes les lignes qui arrivent dans le terminal courant. L’indice à laquelle figure un flux correspond à l’indice de la ligne à laquelle il correspond. Dans les classes filles, la méthode ajoutLigne(Ligne<Moyens>* l, int f), teste si la ligne arrive au Terminal courant. Si c’est le cas, le flux passé en paramètre est ajouté, sinon 0 est ajouté.\newline
-		\subparagraph{}On déclare un template Ligne au lieu d’inclure le fichier où il y a le template complet car on a inclu Terminal.h dans celui-ci. On a donc voulu éviter l’inclusion infini.\newline
+		\subparagraph{}On déclare un template Ligne au lieu d’inclure le fichier où il y a le template complet car on a inclus Terminal.h dans celui-ci. On a donc voulu éviter l’inclusion infini.\newline
 La méthode suppLigne(Ligne<Moyens>* l), on supprime une ligne de la liste.
 		\paragraph{Gare}
 		\subparagraph{}Cette classe hérite de Terminal et redéfini les constructeurs. Elle implémente la méthode virtuelle de Terminal: ajoutLigne. Cette méthode vérifie que la ligne qu’on ajoute est bien une ligne de train. Puis, on ajoute la ligne à la liste. On ajoute aussi le flux correspondant si la destination de la ligne est le terminal courant.
@@ -24,18 +25,69 @@ La méthode suppLigne(Ligne<Moyens>* l), on supprime une ligne de la liste.
 		\paragraph{AeroportInternational}
 		\subparagraph{}Cette classe est exactement comme AeroportRegional sauf qu’elle peut avoir jusqu’à 4 lignes d’avion.
 		\paragraph{HubAeroport}
-		\subparagraph{}Cette classe est exactement comme AeroportInternational mais avec la possiblité de contenir 12 lignes.
+		\subparagraph{}Cette classe est exactement comme AeroportInternational mais avec la possibilité de contenir 12 lignes.
 		\paragraph{HubMultimodal}
 		\subparagraph{}Cette classe est comme HubAeroport avec en plus une relation de composition avec une gare. En effet, si le HubAeroport est détruit alors la gare aussi.
 		\paragraph{Ligne}
-		\subparagraph{}C’est une classe template qui prend en argument un Moyens (de transport): Une sorte d’avion ou un train. Cette classe contient une référence du moyen de transport de la ligne. Cette référence nous sert à utiliser la fonction qui va nous donner le type du moyen de transport. Il nous donnera aussi sa capacité, ce qui va nous servir à calculer la frequence.
+		\subparagraph{}C’est une classe template qui prend en argument un Moyens (de transport): Une sorte d’avion ou un train. Cette classe contient une référence du moyen de transport de la ligne. Cette référence nous sert à utiliser la fonction qui va nous donner le type du moyen de transport. Il nous donnera aussi sa capacité, ce qui va nous servir à calculer la fréquence.
 		\paragraph{Moyens}
 		\subparagraph{}C’est la classe mère des transports. Elle a des attributs qui seront utilisés par ses filles comme la vitesse, l’empreinteCarbone, la capacité et le nom.\newline
 		\subparagraph{}Elle possède 2 méthodes virtuelles: affiche qui est définie dans chaque classe fille pour afficher différentes valeurs et la méthode gettype qui donne le type transport sous la forme d’un string. Elle est redéfinie dans chaque classe fille pour qu’elle renvoie le bon type.
 
 		\paragraph{Voyage}
-		\subparagraph{}Cette classe permet d’utiliser les classes pécédentes car elle permet de se balader d’un terminal à un autre en utilisant un type de ligne en connaisant le terminal de départ et celui de la destination. Puis il ajoute des correspondances jusqu’à atteindre la destination en prenant en compte le flux et l’émission de carbone.
-		\paragraph{Scenario}
-		\subparagraph{}Cette classe est censée regrouper tous les tests et permettre de répondre aux question de l’énoncé cependant cette classes ne fonctionne pas.
+		\subparagraph{}Cette classe permet d’utiliser les classes précédentes car elle permet de se balader d’un terminal à un autre en utilisant un type de ligne en connaissant le terminal de départ et celui de la destination. Puis il ajoute des correspondances jusqu’à atteindre la destination en prenant en compte le flux et l’émission de carbone.
+	\section{Partie C}
+		\paragraph{}
+		Une les partie A et B terminer nous avons convenue de l'utilité d'une classe qui permettrai de mettre en scène les différents éléments implémenté dans les parties précédentes afin de répondre aux problématique de la dernière partie de ce devoir. C'est le rôle de la classe Scenario.\newline Cette classe est déclarée dans le header associé, Scenario.h
+		\subsection{Scenario : instanciation}
+		La classe Scenario s'instancie avec un entier. Il s'agit de l'entier correspondant aux environnement proposés dans la partir C de l'énoncé.\newline Cette entier peut prendre les valeur de 1 à 6.
 	\end{justify}
+		
+		\subsection{Les énumérations ville\_e et typeLien\_e}
+		Des énumerations on été défini afin de simplifier la lecture du code.
+		\paragraph{ville\_e}
+		Cette énumération correspond aux différentes ville évoqué par l'énoncé, les alias de cette énumération prennent des valeur spécifique de manière à pouvoir les utilisé comme arguments pour l'opérateur [] des attribut M, flux et Term.
+		\paragraph{typeLien\_e}
+		Cette énumération permet d'indiquer le type de lien reliant deux ville dans la matrice d'adjacence M.\newline
+		\begin{itemize}
+		\item{TRAIN} correspond à une liaison ferroviaire entre deux gares
+		\item{AVION} correspond à une liaison aérienne assuré par un avion classique.
+		\item{AVIONELECTRIQUE} correspond à une liaison aérienne assuré par un avion élèctrique.
+		\end{itemize}
+		
+		\subsection{Scenario : les attributs}
+		\paragraph{M :}
+		Il s'agit d'une sorte de matrice d'adjacence du graphe des liaison entre les villes. Une sorte car ce n'est pas une matrice binaire. En effet chaque coefficient renseigne également le type de liaison reliant deux ville.\newline Le bout de code suivant créer un lien de villeA ver villeB dans ce sens, avec le type de lien typeDeLien :
+		\begin{center}\verb| M[villeA][villeB] = typeDeLien;|\end{center}
+		villeA et villeB peuvent être des entiers de 0 à 4 ou bien l'une des valeurs de l'énumération ville\_e.
+		\paragraph{Term :}
+		Il s'agit d'un tableau de Terminal, il regroupe les différents terminaux associé à chaque ville.\newline On peut récuparer le terminal associé à une ville grâce aux valeur de l'énumération ville\_e.
+		\paragraph{La liste l :}
+		Il s'agit de la liste regroupant l'ensemble des lien instancié par l'instance courante de Scenario. Elle permet normalement de libérer la mémoire dynamiquement allouer.
+		\paragraph{La matrice v}
+		Il s'agit de la matrice des Voyage d'une villeA à une ville B. Elle fonctionnent de la même manière que la matrice M.
+		\begin{center}\verb| v[villeA][villeB]|\end{center}
+		L'exemple ci-dessus correspond donc au pointeur vers le voyage allant de la villeA à la villeB dans ce sens.
+		\paragraph{Les attribut static ville et typeLien :}
+		Ces attribut permettent d'instancié de manière global pour la classe Scenario des instances des énumération ville\_e et typeLien\_e.
+		\paragraph{L'attribut static flux}
+		Il s'agit de la matrice des flux proposé par la partie C de l'énoncé.
+		
+		\subsection{Scenario : les méthodes}
+		\paragraph{ajouterLienMatrice}
+		Cette méthode ajoute un lien (dont on peut précisé le type) bidirectionnelle entre deux villes.
+		\paragraph{buildVoyage}
+		Cette mathode prend l'entier correspondant aux scénario courant (le même que celui indiquer aux constructeur lors de l'instanciation de la classe).\newline Cette méthode à pour rôle d'allouer chaque Voyage de la matrice v et de construire les trajets pour chacun d'entre eux en fonction du scénario considéré.
+		\paragraph{ajouterLigneVoyage}
+		Ajoute de manière bidirectionnelle une correspondance  pour les voyage de villeA à villeB.
+		\begin{center}\verb| ajouterLigneVoyage(OriginA, OriginB, CorrespA, CorrespB |\end{center}
+		Le bout de code ci-dessus ajoute corespondance de CorrespA à CorrespB pour le voyage de villeA à villeB et une correspondance de CorrespB à CorrespA pour le voyage de villeB à villeA.\newline On parle des voyage dans la matrice v.
+		\paragraph{afficherFlux}
+		Cette méthode affiche sur la sortie standard la matrice flux;
+		\paragraph{afficherMatrice}
+		Cette méthode affiche sur la sortie standard la matrice M
+		\paragraph{affiche}
+		Cette méthode affiche sur la sortie standard une vu de l'instance courante de la classe Scenario.
+	\section{Compilation}
+	Une fois l'archive fourni décompressée, il faut ouvrir un terminal, se placer dans le dossier source de l'archive décompressé et taper la commande "make". Un éxécutable sera alors généré dont le nom sera "TP6-DM\_CANO\_COUPPOUSSAMY.exe"
 \end{document}
